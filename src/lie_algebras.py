@@ -186,16 +186,15 @@ def s2_times_r() -> Tuple[StructureConstants, int, List[str]]:
 
 def s3_geometry() -> Tuple[StructureConstants, int, List[str]]:
     """
-    Lie algebra of the S³ geometry.
+    CS gauge algebra for the S³ geometry: su(2) (dim = 3).
 
-    The isometry group is SO(4), but the geometry is modeled on
-    SU(2) ~ S³.  The Lie algebra su(2) ~ so(3) has the same
-    structure constants as so3().
-
-    For the full isometry group SO(4), the Lie algebra is
-    so(4) = su(2) x su(2) (6-dimensional).  Here we return
-    the 3-dimensional su(2) piece, which governs the CS theory
-    for S³-geometric manifolds.
+    **Caution — gauge group vs. isometry group:**
+    The full isometry group is Isom_0^+(S³) = SO(4), whose Lie algebra
+    is so(4) ≅ su(2) ⊕ su(2)  (dim = 6); see so4().
+    In Chern–Simons theory for S³-geometric manifolds the gauge group is
+    conventionally taken to be SU(2) (or SO(3)), not SO(4).
+    This function returns the 3-dimensional su(2) ≅ so(3) algebra
+    appropriate for that CS computation.
     """
     sc = _antisymmetrize({
         (0, 1, 2): 1,
@@ -203,6 +202,101 @@ def s3_geometry() -> Tuple[StructureConstants, int, List[str]]:
         (2, 0, 1): 1,
     })
     return sc, 3, ["e_0", "e_1", "e_2"]
+
+
+def so4() -> Tuple[StructureConstants, int, List[str]]:
+    """
+    so(4) — Lie algebra of SO(4) = Isom_0^+(S³)  (dim = 6).
+
+    so(4) ≅ su(2) ⊕ su(2) as a direct sum of two simple ideals.
+
+    Basis:  {a_0, a_1, a_2} for the first su(2) factor,
+            {b_0, b_1, b_2} for the second su(2) factor.
+    Commutation relations:
+        First  su(2):  [a_0,a_1]=a_2,  [a_1,a_2]=a_0,  [a_2,a_0]=a_1
+        Second su(2):  [b_0,b_1]=b_2,  [b_1,b_2]=b_0,  [b_2,b_0]=b_1
+        Cross  terms:  all zero (direct sum decomposition).
+
+    The space of Ad-invariant symmetric bilinear forms is 2-dimensional
+    (one free parameter per simple factor).
+    """
+    sc = _antisymmetrize({
+        (0, 1, 2): 1,  (1, 2, 0): 1,  (2, 0, 1): 1,   # first  su(2)
+        (3, 4, 5): 1,  (4, 5, 3): 1,  (5, 3, 4): 1,   # second su(2)
+    })
+    return sc, 6, ["a_0", "a_1", "a_2", "b_0", "b_1", "b_2"]
+
+
+def sl2r_times_r() -> Tuple[StructureConstants, int, List[str]]:
+    """
+    sl(2,R) ⊕ R — Lie algebra of Isom_0^+(SL~_2 R)  (dim = 4).
+
+    Isom_0^+(widetilde{SL}_2 R) ≅ (widetilde{SL}_2 R × R) / Z,
+    where the discrete quotient Z does not affect the Lie algebra.
+    Hence the Lie algebra is sl(2,R) ⊕ R, the same as for H²×R.
+
+    Basis:  e_0, e_1, e_2  (sl(2,R) part),  e_3  (R part).
+    Commutation relations: identical to h2_times_r().
+
+    Note: sl2r_times_r() and h2_times_r() return the same structure
+    constants; they are listed separately to make the geometry–algebra
+    correspondence explicit.
+    """
+    sc = _antisymmetrize({
+        (0, 1, 2):  1,
+        (1, 2, 0):  1,
+        (2, 0, 1): -1,
+    })
+    return sc, 4, ["e_0", "e_1", "e_2", "e_3"]
+
+
+def sl2c_real() -> Tuple[StructureConstants, int, List[str]]:
+    """
+    sl(2,C)_R  ≅  so(1,3) — the Lie algebra of Isom_0^+(H³) = PSL(2,C)
+    viewed as a **real** Lie algebra of real dimension 6.
+
+    Basis:  {J_0, J_1, J_2}  (rotation generators),
+            {K_0, K_1, K_2}  (boost generators).
+    (0-based indices: 0–2 = J, 3–5 = K.)
+
+    Commutation relations of so(1,3):
+        [J_i, J_j] =  eps_{ijk} J_k   (so(3) subalgebra)
+        [J_i, K_j] =  eps_{ijk} K_k   (boosts transform as vectors)
+        [K_i, K_j] = -eps_{ijk} J_k   (Lorentz signature)
+
+    **Remark on the invariant form space.**
+    As a *real* Lie algebra, sl(2,C)_R has a **2-dimensional** space of
+    Ad-invariant symmetric bilinear forms spanned by
+        B_1(X,Y) = Re Tr(XY)   and   B_2(X,Y) = Im Tr(XY)
+    (equivalently, the real and imaginary parts of the Killing form of
+    sl(2,C) over C).  This is because the complexification satisfies
+    (sl(2,C)_R)_C ≅ sl(2,C) ⊕ sl(2,C), which has a 2-dimensional
+    space of invariant forms.
+    As a *complex* Lie algebra, sl(2,C) is simple and has only a
+    1-dimensional space of invariant forms.
+
+    The non-degeneracy condition det(G) = -(t_0^2 + t_1^2)^3 ≠ 0
+    holds for all (t_0, t_1) ≠ (0, 0).
+    """
+    sc = _antisymmetrize({
+        # [J0,J1]=J2, [J1,J2]=J0, [J2,J0]=J1
+        (0, 1, 2):  1,
+        (1, 2, 0):  1,
+        (2, 0, 1):  1,
+        # [J0,K1]=K2, [J1,K2]=K0, [J2,K0]=K1
+        (0, 4, 5):  1,
+        (1, 5, 3):  1,
+        (2, 3, 4):  1,
+        # [J0,K2]=-K1, [J1,K0]=-K2, [J2,K1]=-K0
+        (0, 5, 4): -1,
+        (1, 3, 5): -1,
+        (2, 4, 3): -1,
+        # [K0,K1]=-J2, [K1,K2]=-J0, [K2,K0]=-J1
+        (3, 4, 2): -1,
+        (4, 5, 0): -1,
+        (5, 3, 1): -1,
+    })
+    return sc, 6, ["J_0", "J_1", "J_2", "K_0", "K_1", "K_2"]
 
 
 def e3_geometry() -> Tuple[StructureConstants, int, List[str]]:
@@ -251,12 +345,15 @@ def e3_geometry() -> Tuple[StructureConstants, int, List[str]]:
 BUILTIN_ALGEBRAS = {
     "sl2":        sl2,
     "so3":        so3,
-    "su2":        so3,        # su(2) ~ so(3)
+    "su2":        so3,           # su(2) ~ so(3)
     "sol":        sol,
     "nil":        nil_geometry,
     "h2xr":       h2_times_r,
     "s2xr":       s2_times_r,
-    "s3":         s3_geometry,
+    "s3":         s3_geometry,   # CS gauge algebra su(2), dim=3
+    "so4":        so4,           # Lie algebra of Isom_0^+(S³), dim=6
+    "sl2r_times_r": sl2r_times_r,  # Lie algebra of Isom_0^+(SL~_2 R), dim=4
+    "sl2c":       sl2c_real,     # Lie algebra of Isom_0^+(H³), dim=6
     "e3":         e3_geometry,
 }
 

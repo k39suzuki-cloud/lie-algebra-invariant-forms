@@ -15,7 +15,7 @@ algebras play a central role.
 Let $\mathfrak{g}$ be a Lie algebra with basis $\{e_1, \ldots, e_n\}$ and
 structure constants $c^k_{ij}$ defined by
 
-$$[e_i, e_j] = \sum_k c^k_{ij} e_k.$$
+$$[e_i, e_j] = \sum_k c^k_{ij}\, e_k.$$
 
 A symmetric bilinear form $\langle\cdot,\cdot\rangle : \mathfrak{g} \times \mathfrak{g} \to \mathbb{K}$
 with Gram matrix $G = (g_{ij})$, $g_{ij} = \langle e_i, e_j \rangle$, is
@@ -26,7 +26,7 @@ $$\langle [A, B], C \rangle + \langle B, [A, C] \rangle = 0
 
 In terms of structure constants, this reads (for every triple $i, j, k$):
 
-$$\sum_l c^l_{ij} g_{lk} + \sum_m c^m_{ik} g_{jm} = 0.$$$
+$$\sum_l c^l_{ij} g_{lk} + \sum_m c^m_{ik} g_{jm} = 0. \tag{$*$}$$
 
 The toolkit solves $(*)$ together with the symmetry constraint $g_{ij} = g_{ji}$
 as a **homogeneous linear system** over $\mathbb{Q}$, using
@@ -40,7 +40,7 @@ polynomials** (degree-2 Ad-invariant maps $\mathfrak{g} \to \mathbb{K}$)
 used to define Chern–Simons forms:
 
 $$\mathrm{CS}_{\mathfrak{p}}(\omega_1, \omega_0)
-= 2\int_0^1 \langle \omega_1 - \omega_0, \Omega_t \rangle  dt
+= 2\int_0^1 \langle \omega_1 - \omega_0, \Omega_t \rangle \, dt
 \in \mathcal{A}^3(M;\mathbb{K}),$$
 
 where $\Omega_t$ is the curvature of the interpolating connection
@@ -52,30 +52,41 @@ is the first step in computing Chern–Simons invariants of geometric
 
 ## Thurston's Eight Geometries
 
-The following table summarises the results for the Lie algebras of the
-isometry groups of Thurston's eight model geometries.
+> **Important caveat.**  This tool computes Ad-invariant symmetric bilinear
+> forms at the **Lie algebra level**.  This corresponds to invariant
+> polynomials for the **identity component** $G_0 = \mathrm{Isom}_0^+(X)$
+> of the isometry group.  Invariance under the full isometry group
+> (including discrete components) is a separate, stronger condition and
+> must be checked independently.  In Chern–Simons theory the relevant group
+> is furthermore the **gauge group** (often $\mathrm{SU}(2)$ or
+> $\mathrm{SL}(2,\mathbb{R})$), which may differ from $G_0$; see Table 2.
 
-> **Note:** This tool computes Ad-invariant symmetric bilinear forms at
-> the **Lie algebra level**, which corresponds to invariant polynomials
-> for the identity component $G^0$ of the gauge group $G$. Invariance
-> under the full gauge group (including discrete components) is a
-> separate, stronger condition and must be checked independently.
+### Table 1: Isometry groups and their Lie algebras
 
-| Geometry | Lie algebra $\mathfrak{g}$ | dim | Free params | Non-degenerate? |
-|---|---|---|---|---|
-| $S^3$ | $\mathfrak{su}(2) \cong \mathfrak{so}(3)$ | 3 | 1 | Yes ($t_0 \neq 0$) |
-| $\mathbb{E}^3$ | $\mathfrak{se}(3)$ | 6 | 2 | Yes ($t_0 \neq 0$) |
-| $\mathbb{H}^3$ | $\mathfrak{sl}(2,\mathbb{R})$ | 3 | 1 | Yes ($t_0 \neq 0$) |
-| $S^2 \times \mathbb{R}$ | $\mathfrak{so}(3) \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0, t_1 \neq 0$) |
-| $\mathbb{H}^2 \times \mathbb{R}$ | $\mathfrak{sl}(2,\mathbb{R}) \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0, t_1 \neq 0$) |
-| $\mathrm{Nil}$ | $\mathfrak{nil} \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0 \neq 0$) |
-| $\mathrm{Sol}$ | $\mathfrak{sol}$ | 3 | — | **No** (always degenerate) |
-| $\widetilde{\mathrm{SL}}_2\mathbb{R}$ | $\mathfrak{sl}(2,\mathbb{R})$ | 3 | 1 | Yes ($t_0 \neq 0$) |
+| Geometry $X$ | $G_0 = \mathrm{Isom}_0^+(X)$ | $\mathfrak{g} = \mathrm{Lie}(G_0)$ | dim | Free params | Non-degenerate? |
+|---|---|---|---|---|---|
+| $S^3$ | $\mathrm{SO}(4) \cong (\mathrm{SU}(2)\times\mathrm{SU}(2))/\mathbb{Z}_2$ | $\mathfrak{so}(4) \cong \mathfrak{su}(2)\oplus\mathfrak{su}(2)$ | 6 | 2 | Yes ($t_0, t_1 \neq 0$) |
+| $\mathbb{E}^3$ | $\mathrm{SE}(3)$ | $\mathfrak{se}(3)$ | 6 | 2 | Yes ($t_0 \neq 0$) |
+| $\mathbb{H}^3$ | $\mathrm{PSL}(2,\mathbb{C}) \cong \mathrm{SO}^+(1,3)$ | $\mathfrak{sl}(2,\mathbb{C})_\mathbb{R} \cong \mathfrak{so}(1,3)$ | 6 | 2 | Yes ($t_0^2+t_1^2 \neq 0$) |
+| $S^2 \times \mathbb{R}$ | $\mathrm{SO}(3)\times\mathbb{R}$ | $\mathfrak{so}(3) \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0, t_1 \neq 0$) |
+| $\mathbb{H}^2 \times \mathbb{R}$ | $\mathrm{PSL}(2,\mathbb{R})\times\mathbb{R}$ | $\mathfrak{sl}(2,\mathbb{R}) \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0, t_1 \neq 0$) |
+| $\mathrm{Nil}$ | $\mathrm{Nil}\rtimes\mathrm{U}(1)$ | $\mathfrak{nil} \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0 \neq 0$) |
+| $\mathrm{Sol}$ | $\mathrm{Sol}\rtimes(\mathbb{Z}/2)^2$ | $\mathfrak{sol}$ | 3 | — | **No** (always degenerate) |
+| $\widetilde{\mathrm{SL}}_2\mathbb{R}$ | $(\widetilde{\mathrm{SL}}_2\mathbb{R}\times\mathbb{R})/\mathbb{Z}$ | $\mathfrak{sl}(2,\mathbb{R}) \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0, t_1 \neq 0$) |
 
 > **Note on Sol:** The Sol geometry is the only one among Thurston's eight
 > for which no Ad-invariant non-degenerate symmetric bilinear form exists.
-> This is reflected in the more delicate structure of Chern–Simons theory
-> for Sol manifolds.
+
+### Table 2: Chern–Simons gauge groups
+
+In practice, CS invariants for geometric 3-manifolds are computed using
+a smaller gauge group.  The two most common choices are:
+
+| Geometry | CS gauge group $G$ | $\mathfrak{g} = \mathrm{Lie}(G)$ | dim | Key in `get_algebra` |
+|---|---|---|---|---|
+| $S^3$, $S^2\times\mathbb{R}$ | $\mathrm{SU}(2)$ | $\mathfrak{su}(2) \cong \mathfrak{so}(3)$ | 3 | `"su2"` |
+| $\mathbb{H}^3$ | $\mathrm{SL}(2,\mathbb{C})$ | $\mathfrak{sl}(2,\mathbb{C})_\mathbb{R}$ | 6 | `"sl2c"` |
+| $\mathbb{H}^2\times\mathbb{R}$, $\widetilde{\mathrm{SL}}_2\mathbb{R}$ | $\mathrm{SL}(2,\mathbb{R})$ | $\mathfrak{sl}(2,\mathbb{R})$ | 3 | `"sl2"` |
 
 ---
 
