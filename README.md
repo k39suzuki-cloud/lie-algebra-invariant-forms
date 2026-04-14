@@ -15,7 +15,7 @@ algebras play a central role.
 Let $\mathfrak{g}$ be a Lie algebra with basis $\{e_1, \ldots, e_n\}$ and
 structure constants $c^k_{ij}$ defined by
 
-$$[e_i, e_j] = \sum_k c^k_{ij}\, e_k.$$
+$$[e_i, e_j] = \sum_k c^k_{ij} e_k.$$
 
 A symmetric bilinear form $\langle\cdot,\cdot\rangle : \mathfrak{g} \times \mathfrak{g} \to \mathbb{K}$
 with Gram matrix $G = (g_{ij})$, $g_{ij} = \langle e_i, e_j \rangle$, is
@@ -40,7 +40,7 @@ polynomials** (degree-2 Ad-invariant maps $\mathfrak{g} \to \mathbb{K}$)
 used to define Chern–Simons forms:
 
 $$\mathrm{CS}_{\mathfrak{p}}(\omega_1, \omega_0)
-= 2\int_0^1 \langle \omega_1 - \omega_0, \Omega_t \rangle \, dt
+= 2\int_0^1 \langle \omega_1 - \omega_0, \Omega_t \rangle  dt
 \in \mathcal{A}^3(M;\mathbb{K}),$$
 
 where $\Omega_t$ is the curvature of the interpolating connection
