@@ -70,7 +70,7 @@ is the first step in computing Chern–Simons invariants of geometric
 | $\mathbb{H}^3$ | $\mathrm{PSL}(2,\mathbb{C}) \cong \mathrm{SO}^+(1,3)$ | $\mathfrak{sl}(2,\mathbb{C})_\mathbb{R} \cong \mathfrak{so}(1,3)$ | 6 | 2 | Yes ($t_0^2+t_1^2 \neq 0$) |
 | $S^2 \times \mathbb{R}$ | $\mathrm{SO}(3)\times\mathbb{R}$ | $\mathfrak{so}(3) \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0, t_1 \neq 0$) |
 | $\mathbb{H}^2 \times \mathbb{R}$ | $\mathrm{PSL}(2,\mathbb{R})\times\mathbb{R}$ | $\mathfrak{sl}(2,\mathbb{R}) \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0, t_1 \neq 0$) |
-| $\mathrm{Nil}$ | $\mathrm{Nil}\rtimes\mathrm{U}(1)$ | $\mathfrak{nil} \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0 \neq 0$) |
+| $\mathrm{Nil}$ | $\mathrm{Nil}\rtimes\mathrm{U}(1)$ | $\mathfrak{nil} \rtimes \mathbb{R}$ | 4 | 2 | Yes ($t_0 \neq 0$) |
 | $\mathrm{Sol}$ | $\mathrm{Sol}\rtimes(\mathbb{Z}/2)^2$ | $\mathfrak{sol}$ | 3 | — | **No** (always degenerate) |
 | $\widetilde{\mathrm{SL}}_2\mathbb{R}$ | $(\widetilde{\mathrm{SL}}_2\mathbb{R}\times\mathbb{R})/\mathbb{Z}$ | $\mathfrak{sl}(2,\mathbb{R}) \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0, t_1 \neq 0$) |
 
