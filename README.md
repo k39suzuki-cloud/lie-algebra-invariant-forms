@@ -55,10 +55,16 @@ is the first step in computing Chern–Simons invariants of geometric
 The following table summarises the results for the Lie algebras of the
 isometry groups of Thurston's eight model geometries.
 
+> **Note:** This tool computes Ad-invariant symmetric bilinear forms at
+> the **Lie algebra level**, which corresponds to invariant polynomials
+> for the identity component $G^0$ of the gauge group $G$. Invariance
+> under the full gauge group (including discrete components) is a
+> separate, stronger condition and must be checked independently.
+
 | Geometry | Lie algebra $\mathfrak{g}$ | dim | Free params | Non-degenerate? |
 |---|---|---|---|---|
 | $S^3$ | $\mathfrak{su}(2) \cong \mathfrak{so}(3)$ | 3 | 1 | Yes ($t_0 \neq 0$) |
-| $\mathbb{E}^3$ | $\mathfrak{se}(3)$ | 6 | — | — |
+| $\mathbb{E}^3$ | $\mathfrak{se}(3)$ | 6 | 2 | Yes ($t_0 \neq 0$) |
 | $\mathbb{H}^3$ | $\mathfrak{sl}(2,\mathbb{R})$ | 3 | 1 | Yes ($t_0 \neq 0$) |
 | $S^2 \times \mathbb{R}$ | $\mathfrak{so}(3) \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0, t_1 \neq 0$) |
 | $\mathbb{H}^2 \times \mathbb{R}$ | $\mathfrak{sl}(2,\mathbb{R}) \oplus \mathbb{R}$ | 4 | 2 | Yes ($t_0, t_1 \neq 0$) |
