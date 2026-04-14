@@ -26,7 +26,7 @@ $$\langle [A, B], C \rangle + \langle B, [A, C] \rangle = 0
 
 In terms of structure constants, this reads (for every triple $i, j, k$):
 
-$$\sum_l c^l_{ij} g_{lk} + \sum_m c^m_{ik} g_{jm} = 0. \tag{$*$}$$
+$$\sum_l c^l_{ij} g_{lk} + \sum_m c^m_{ik} g_{jm} = 0.$$$
 
 The toolkit solves $(*)$ together with the symmetry constraint $g_{ij} = g_{ji}$
 as a **homogeneous linear system** over $\mathbb{Q}$, using
