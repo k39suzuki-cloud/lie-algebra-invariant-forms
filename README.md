@@ -26,7 +26,7 @@ $$\langle [A, B], C \rangle + \langle B, [A, C] \rangle = 0
 
 In terms of structure constants, this reads (for every triple $i, j, k$):
 
-$$\sum_l c^l_{ij}\, g_{lk} \;+\; \sum_m c^m_{ik}\, g_{jm} \;=\; 0. \tag{$*$}$$
+$$\sum_l c^l_{ij} g_{lk} + \sum_m c^m_{ik} g_{jm} = 0. \tag{$*$}$$
 
 The toolkit solves $(*)$ together with the symmetry constraint $g_{ij} = g_{ji}$
 as a **homogeneous linear system** over $\mathbb{Q}$, using
@@ -40,8 +40,8 @@ polynomials** (degree-2 Ad-invariant maps $\mathfrak{g} \to \mathbb{K}$)
 used to define Chern–Simons forms:
 
 $$\mathrm{CS}_{\mathfrak{p}}(\omega_1, \omega_0)
-= 2\int_0^1 \langle \omega_1 - \omega_0,\, \Omega_t \rangle\, dt
-\;\in \mathcal{A}^3(M;\mathbb{K}),$$
+= 2\int_0^1 \langle \omega_1 - \omega_0, \Omega_t \rangle \, dt
+\in \mathcal{A}^3(M;\mathbb{K}),$$
 
 where $\Omega_t$ is the curvature of the interpolating connection
 $\omega_t = (1-t)\omega_0 + t\omega_1$.  Knowing the space of such forms
