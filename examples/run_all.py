@@ -27,7 +27,7 @@ SECTION_LABELS = {
     "sl2":  "sl(2, R)  — Lie algebra of SL(2, R) / PSL(2, R)",
     "so3":  "so(3) ~ su(2)  — Lie algebra of SO(3) / SU(2)  [S³ geometry]",
     "sol":  "sol  — Sol geometry  (NO non-degenerate invariant form)",
-    "nil":  "nil × R  — Nil geometry",
+    "nil":  "nil ⋊ R  — Nil geometry  (semidirect product)",
     "h2xr": "sl(2, R) × R  — H²×R geometry",
     "s2xr": "so(3) × R  — S²×R geometry",
     "s3":   "su(2) ~ so(3)  — S³ geometry (3-dim piece)",

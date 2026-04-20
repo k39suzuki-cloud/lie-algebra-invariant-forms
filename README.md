@@ -151,7 +151,7 @@ $t_0$.
 ```python
 from src import list_algebras
 print(list_algebras())
-# ['e3', 'h2xr', 'nil', 's2xr', 's3', 'sl2', 'so3', 'sol', 'su2']
+# ['e3', 'h2xr', 'nil', 's2xr', 's3', 'sl2', 'sl2c', 'sl2r_times_r', 'so3', 'so4', 'sol', 'su2']
 ```
 
 ### Defining a custom Lie algebra

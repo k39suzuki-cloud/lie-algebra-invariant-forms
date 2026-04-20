@@ -114,16 +114,23 @@ def sol() -> Tuple[StructureConstants, int, List[str]]:
 
 def nil_geometry() -> Tuple[StructureConstants, int, List[str]]:
     """
-    Lie algebra of the Nil geometry (= Heisenberg group x R).
+    Lie algebra of the Nil geometry  =  Isom_0(Nil).
+
+    Isom_0(Nil) is the semidirect product  nil ⋊ U(1), where
+    nil is the 3-dimensional Heisenberg algebra and U(1) acts
+    by rotation in the (X, Y) plane.  The Lie algebra is therefore
+    a **semidirect product** nil ⋊ R, NOT the direct product nil × R.
 
     Basis:  X (e_0), Y (e_1), Z (e_2), R (e_3).
     Commutation relations:
-        [X, Y] =  Z,    i.e.  c^2_{01} = 1
-        [R, X] =  Y,    i.e.  c^1_{30} = 1
-        [R, Y] = -X,    i.e.  c^0_{31} = -1
+        [X, Y] =  Z,    i.e.  c^2_{01} = 1   (Heisenberg part)
+        [R, X] =  Y,    i.e.  c^1_{30} = 1   (U(1) action)
+        [R, Y] = -X,    i.e.  c^0_{31} = -1  (U(1) action)
 
-    The isometry group of Nil has Lie algebra  nil x R,
-    where nil is the 3-dimensional Heisenberg algebra.
+    The generator R rotates X and Y into each other; Z is central.
+    Because of the non-trivial action of R, this algebra is not
+    isomorphic to the direct product nil × R (in which R would
+    commute with everything).
     """
     sc = _antisymmetrize({
         (0, 1, 2):  1,   # [X, Y] = Z
